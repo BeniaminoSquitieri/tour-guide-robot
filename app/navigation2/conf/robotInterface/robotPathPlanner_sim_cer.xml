@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+SPDX-FileCopyrightText: 2006-2025 Istituto Italiano di Tecnologia (IIT)
+SPDX-License-Identifier: BSD-3-Clause
+-->
+<!DOCTYPE robot PUBLIC "-//YARP//DTD yarprobotinterface 3.0//EN" "http://www.yarp.it/DTD/yarprobotinterfaceV3.0.dtd">
+<robot name="robotPathPlanner" build="1" portprefix="" xmlns_xi="http://www.w3.org/2001/XInclude">
+    <devices>
+        <device name="pathPlanner" type="robotPathPlannerDev">
+            <group name="PATHPLANNER_GENERAL">
+                <param name="publish_map_image_hz">15</param>
+            </group>
+            <group name="NAVIGATION">
+                <param name="min_waypoint_distance">0</param>
+                <param name="use_optimized_path">1</param>
+                <param name="enable_try_recovery">0</param>
+                <param name="goal_tolerance_lin">0.05</param>
+                <param name="goal_tolerance_ang">0.6</param>
+                <param name="goal_max_lin_speed">0.45</param>
+                <param name="goal_max_ang_speed">5.0</param>
+                <param name="goal_min_lin_speed">0.1</param>
+                <param name="goal_min_ang_speed">0.1</param>
+                <param name="goal_ang_speed_gain">0.3</param>
+                <param name="goal_lin_speed_gain">0.1</param>
+                <param name="waypoint_tolerance_lin">0.1</param>
+                <param name="waypoint_tolerance_ang">5</param>
+                <param name="waypoint_max_lin_speed">0.45</param>
+                <param name="waypoint_max_ang_speed">5.0</param>
+                <param name="waypoint_min_lin_speed">0.1</param>
+                <param name="waypoint_min_ang_speed">0.1</param>
+                <param name="waypoint_ang_speed_gain">0.3</param>
+                <param name="waypoint_lin_speed_gain">0.1</param>
+            </group>
+            <group name="INTERNAL_NAVIGATOR">
+                <param name="plugin">robotGotoDev</param>
+                <param name="context">robotPathPlannerExamples</param>
+                <param name="from">robotGoto_sim_cer.ini</param>
+            </group>
+            <group name="LOCALIZATION">
+                <param name="robot_frame_id">mobile_base_body_link</param>
+                <param name="map_frame_id">map</param>
+                <param name="localizationserver_name">/localization2D_nws_yarp</param>
+                <param name="mapserver_name">/map2D_nws_yarp</param>
+            </group>
+            <group name="LASER">
+                <param name="laser_port">/SIM_CER_ROBOT/laser:o</param>
+            </group>
+            <group name="ROBOT_GEOMETRY">
+                <param name="robot_radius">0.30</param>
+                <param name="laser_pos_x">0.245</param>
+                <param name="laser_pos_y">0</param>
+                <param name="laser_pos_theta">-135</param>
+            </group>
+        </device>
+        <device name="nav2DNwsYarp" type="navigation2D_nws_yarp">
+            <group name="GENERAL">
+                <param name="name" extern_name="nav2dnwsyarp">/navigation2D_nws_yarp</param>
+            </group>
+            <action phase="startup" level="5" type="attach">
+                <paramlist name="networks">
+                    <elem name="subdevicepathplanner">pathPlanner</elem>
+                </paramlist>
+            </action>
+            <action phase="shutdown" level="5" type="detach" />
+        </device>
+    </devices>
+</robot>
