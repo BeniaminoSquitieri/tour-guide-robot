@@ -1,5 +1,5 @@
 <application>
-   <name>Navigation_ROS2_R1_SIM</name>
+   <name>Navigation_ROS2_R1_SIM_pathplanner</name>
    <dependencies>
    </dependencies>
 
@@ -58,7 +58,7 @@
 
    <module>
       <name>yarprobotinterface</name>
-      <parameters>--context navigation2 --from robotPathPlanner_cer.ini</parameters>
+      <parameters>--context navigation2 --from robotPathPlanner_sim_cer.ini</parameters>
       <node>console</node>
    </module>
 
@@ -82,5 +82,16 @@
    </module>
 
    <!-- connections -->
+  <connection>
+    <from>/robotGoto/control:o</from>
+    <to>/baseControl/input/command:i</to>
+    <protocol>tcp+recv.portmonitor+type.dll+file.joy2vel</protocol>
+  </connection>
+
+   <connection>
+     <from>/robotPathPlanner/commands:o</from>
+     <to>/robotGoto/rpc</to>
+     <protocol>tcp</protocol>
+   </connection>
 
 </application>
