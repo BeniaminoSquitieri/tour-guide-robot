@@ -7,4 +7,4 @@
 
 file(GLOB map_office ${CMAKE_CURRENT_SOURCE_DIR}/*.*)
 
-yarp_install(FILES ${map_office}    DESTINATION ${TOUR-GUIDE-ROBOT_CONTEXTS_INSTALL_DIR}/maps/TEST_MUSEUM_SQUARE)
+yarp_install(FILES ${map_office}    DESTINATION ${TOUR-GUIDE-ROBOT_CONTEXTS_INSTALL_DIR}/maps_simulation/TEST_MUSEUM_SQUARE)
