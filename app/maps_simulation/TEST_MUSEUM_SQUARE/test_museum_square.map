@@ -4,6 +4,7 @@
 
 MapName     test_museum_square
 YarpMapData Test_museum_square_502px_23m.ppm
+RosMapData  test_museum_square.yaml
 
 resolution 0.0458167
 origin (-11.7291, -11.7291, 0.000000)

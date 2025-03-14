@@ -52,7 +52,7 @@
 
    <module>
       <name>yarprobotinterface</name>
-      <parameters>--context navigation2 --from localizationROS2_sim_gam.ini --init_map gam_sim_real</parameters>
+      <parameters>--context navigation2 --from localizationROS2_sim_square.ini --init_map test_museum_square</parameters>
       <node>console</node>
    </module>
 
