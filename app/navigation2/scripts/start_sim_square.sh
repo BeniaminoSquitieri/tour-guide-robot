@@ -1,6 +1,6 @@
 yarpserver &
 sleep 1;
-ros2 launch gazebo_ros gazebo.launch.py extra_gazebo_args:=-slibgazebo_yarp_clock.so world:=${TOUR_GUIDE_ROBOT_SOURCE_DIR}/app/maps/TEST_MUSEUM_SQUARE/Test_museum_square.world &
+ros2 launch gazebo_ros gazebo.launch.py extra_gazebo_args:=-slibgazebo_yarp_clock.so world:=${TOUR_GUIDE_ROBOT_SOURCE_DIR}/app/maps_simulation/TEST_MUSEUM_SQUARE/Test_museum_square.world &
 sleep 1;
 yarprun --server /console --log &
 sleep 1;
