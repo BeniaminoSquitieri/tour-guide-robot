@@ -235,6 +235,7 @@ WORKDIR ${robotology_install_folder}
 RUN mkdir installed && \
     git clone https://github.com/leogori/r1-models -b fix_navigation && \
     cd r1-models && cmake -S . -B build -DCMAKE_INSTALL_PREFIX=${user1_home}/installed && \
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. .. && 
     cmake --build build && cmake --build build --target install
 ENV R1_MODELS_SOURCE_DIR=${robotology_install_folder}/r1-models 
 ENV R1_MODELS_DIR=${robotology_install_folder}/r1-models/build
